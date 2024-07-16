@@ -1,1 +1,28 @@
-<p>list works!</p>
+
+
+
+  <br>
+  <h2>&nbsp;&nbsp; Listing products</h2>
+
+  <div class="content-container" style="margin: 1rem;">
+    <table border=1>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products; track product.id) {
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.title }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+
+
+

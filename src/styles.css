@@ -11,4 +11,9 @@ body {
   display: flex;
   width: 100%;
   justify-content: center;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 748px;
 }/*# sourceMappingURL=styles.css.map */
