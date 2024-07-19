@@ -1,9 +1,11 @@
 
 
+  <div class="action-container">
+    <a [routerLink]="['/create-product']" mat-flat-button style="text-decoration: none; margin: 1rem; background: #770881;">Criar produto</a>
+  </div>
 
   <br>
   <h2>&nbsp;&nbsp; Listing products</h2>
-  <br>
 
   @for (product of products; track product.id) {
     <app-card [product]="product"></app-card>

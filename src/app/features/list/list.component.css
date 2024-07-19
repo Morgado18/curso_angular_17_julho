@@ -1,1 +1,4 @@
-/*# sourceMappingURL=list.component.css.map */
+.action-container {
+  display: flex;
+  justify-content: flex-end;
+}/*# sourceMappingURL=list.component.css.map */
