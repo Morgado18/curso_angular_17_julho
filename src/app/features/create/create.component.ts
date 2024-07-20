@@ -2,8 +2,13 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProductsService } from '../../shared/services/products.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create',
@@ -17,6 +22,8 @@ import { ProductsService } from '../../shared/services/products.service';
 export class CreateComponent {
 
   productServices = inject(ProductsService);
+  matSnackBar = inject(MatSnackBar)
+  router = inject(Router)
 
   form = new FormGroup({
     title: new FormControl<string>('', {
@@ -28,7 +35,12 @@ export class CreateComponent {
     this.productServices.post({
       title: this.form.controls.title.value,
     }).subscribe(()=>{ /* depois de salvar */
-      alert('Created!')
+      this.matSnackBar.open('Product created with success!', 'ok', {
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      })
+      this.router.navigateByUrl('/') /* .catch(console.log) redicionará para rota / se der erro, irá exibir no console*/
     })
   }
 

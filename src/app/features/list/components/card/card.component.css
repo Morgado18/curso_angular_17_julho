@@ -1,9 +1,3 @@
-.cards {
-  display: flex;
-  align-items: center;
-  flex-flow: row wrap;
-}
-
 .product-card {
   /* color: lavender; */
   max-width: 250px;

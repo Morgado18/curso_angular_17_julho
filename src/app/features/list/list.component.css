@@ -1,4 +1,22 @@
 .action-container {
   display: flex;
   justify-content: flex-end;
+  margin: 0px 100px 0 100px;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  margin: 0px 100px 0 100px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.col-left {
+  flex: 50%;
 }/*# sourceMappingURL=list.component.css.map */
