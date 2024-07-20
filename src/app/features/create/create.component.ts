@@ -35,11 +35,7 @@ export class CreateComponent {
     this.productServices.post({
       title: this.form.controls.title.value,
     }).subscribe(()=>{ /* depois de salvar */
-      this.matSnackBar.open('Product created with success!', 'ok', {
-        duration: 5000,
-        horizontalPosition: 'right',
-        verticalPosition: 'top'
-      })
+      this.matSnackBar.open('Product created with success!', 'ok')
       this.router.navigateByUrl('/') /* .catch(console.log) redicionará para rota / se der erro, irá exibir no console*/
     })
   }
