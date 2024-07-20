@@ -1,1 +1,20 @@
-<p>create works!</p>
+
+
+  <div class="container-form">
+    <h2>
+      <strong>
+        Create product
+      </strong>
+    </h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input type="text" formControlName="title" matInput> <!-- placeholder="Title" -->
+      </mat-form-field>
+      <button type="submit">
+        Create
+      </button>
+    </form>
+  </div>
+
