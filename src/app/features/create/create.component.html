@@ -1,20 +1,27 @@
 
 
-  <div class="container-form">
-    <h2>
-      <strong>
-        Create product
-      </strong>
-    </h2>
-
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input type="text" formControlName="title" matInput> <!-- placeholder="Title" -->
-      </mat-form-field>
-      <button type="submit">
-        Create
-      </button>
-    </form>
+  <div class="row">
+    <div class="h2-form-cad-product">
+      <h2>
+        <strong>
+          Create product
+        </strong>
+      </h2>
+    </div>
+    <div class="btn-list-product">
+      <a [routerLink]="['/']" mat-flat-button style="text-decoration: none; margin: 1rem; " color="primary">
+        Products
+      </a>
+    </div>
   </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="container-form">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input type="text" formControlName="title" matInput> <!-- placeholder="Title" -->
+    </mat-form-field>
+    <button type="submit" mat-flat-button color="accent">
+      Create
+    </button>
+  </form>
 
