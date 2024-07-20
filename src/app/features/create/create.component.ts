@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
+import { ProductsService } from '../../shared/services/products.service';
 
 @Component({
   selector: 'app-create',
@@ -15,6 +16,8 @@ import { RouterLink } from '@angular/router';
 })
 export class CreateComponent {
 
+  productServices = inject(ProductsService);
+
   form = new FormGroup({
     title: new FormControl<string>('', {
       nonNullable: true, validators: Validators.required
@@ -22,7 +25,11 @@ export class CreateComponent {
   });
 
   onSubmit() { /* pode ser qualquer nome, será chamada quando houver uma sumbimssão de form */
-    this.form.controls.title.value;
+    this.productServices.post({
+      title: this.form.controls.title.value,
+    }).subscribe(()=>{ /* depois de salvar */
+      alert('Created!')
+    })
   }
 
 }
