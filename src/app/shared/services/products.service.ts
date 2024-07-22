@@ -18,7 +18,11 @@ export class ProductsService {
       return this.httpCliente.post('api/products', payload)
     }
 
-    put(payload: ProductPayLoad, id: string){
+    get(id: string){
+      return this.httpCliente.get<Product>(`api/products/${id}`)
+    }
+
+    put(id: string, payload: ProductPayLoad){
       return this.httpCliente.put(`api/products/${id}`, payload)
     }
 

@@ -18,8 +18,9 @@ export const routes: Routes = [
   {
     path: 'edit-product/:id',
     resolve: {
-      'product': (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+      product: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
         const productsService = inject(ProductsService)
+        return productsService.get(route.params['id'] as string)
       }
     },
     loadComponent: () => import('./features/edit/edit.component').then((m)=> m.EditComponent)
