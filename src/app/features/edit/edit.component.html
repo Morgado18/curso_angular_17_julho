@@ -1,1 +1,27 @@
-<p>edit works!</p>
+
+
+<div class="row">
+  <div class="h2-form-cad-product">
+    <h2>
+      <strong>
+        Edit product
+      </strong>
+    </h2>
+  </div>
+  <div class="btn-list-product">
+    <a [routerLink]="['/']" mat-flat-button style="text-decoration: none; margin: 1rem; " color="primary">
+      Products
+    </a>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container-form">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input type="text" formControlName="title" matInput required> <!-- placeholder="Title" -->
+  </mat-form-field>
+  <button type="submit" mat-flat-button color="accent">
+    Create
+  </button>
+</form>
+

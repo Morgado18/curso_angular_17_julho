@@ -1,12 +1,10 @@
-
-
-.container-form{
+.container-form {
   display: flex;
   flex-direction: column;
   margin: 0px 100px 0 100px;
 }
 
-.row{
+.row {
   display: flex;
   align-items: center;
   margin: 0px 100px 0 100px;
@@ -14,14 +12,14 @@
   margin-top: 2rem;
 }
 
-.btn-list-product{
+.btn-list-product {
   display: flex;
   justify-content: flex-end;
   flex: 20%;
   margin-right: 3rem;
 }
 
-.h2-form-cad-product{
+.h2-form-cad-product {
   margin: 20px 50px 10px 0px;
   flex: 80%;
-}
+}/*# sourceMappingURL=edit.component.css.map */
