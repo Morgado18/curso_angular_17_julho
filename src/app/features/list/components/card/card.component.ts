@@ -22,6 +22,11 @@ export class CardComponent {
   onEdit(){
     this.edit.emit()
   }
-
   productTitle = computed(()=> this.product().title)
+
+  @Output() purge = new EventEmitter()
+
+  onDelete(){
+    this.purge.emit()
+  }
 }

@@ -8,6 +8,35 @@ import { CardComponent } from './components/card/card.component';
 import { RouterLink, Router } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogModule,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+
+@Component({
+  selector: 'app-confirmation-dialog',
+  template: `
+    <h2 mat-dialog-title>Purge product</h2>
+    <mat-dialog-content>
+      Would you like to purge this product?
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>No</button>
+      <button mat-button mat-dialog-close cdkFocusInitial>Yes</button>
+    </mat-dialog-actions>
+  `,
+  standalone: true,
+  imports: [
+    MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, MatDialogModule
+  ]
+})
+export class ConfirmationDialogComponent {}
+
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -17,6 +46,7 @@ import {MatButtonModule} from '@angular/material/button';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
+
 export class ListComponent {
 
   products: Product[] = []
@@ -33,6 +63,18 @@ export class ListComponent {
 
   onEdit(product: Product){
     this.router.navigate(['edit-product', product.id])
+  }
+
+  matDialog = inject(MatDialog)
+
+  onDelete(product: Product){
+    /* debugger */
+    /* alert('chegou') */
+    this.matDialog.open(ConfirmationDialogComponent)
+      .afterClosed()
+      .subscribe((data)=>{
+        console.log('afterClosed', data)
+      })
   }
 
 }
