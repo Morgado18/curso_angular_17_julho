@@ -3,12 +3,14 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Product } from '../../interfaces/product.interface';
 import { RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [
-    ReactiveFormsModule, RouterLink, MatFormFieldModule
+    ReactiveFormsModule, RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
@@ -28,11 +30,11 @@ export class FormComponent {
     })
   }
 
-  @Output() submit = new EventEmitter()
+  @Output() done = new EventEmitter<Product>()
 
   onSubmit(){
     const product = this.form.value as Product
-    this.submit.emit()
+    this.done.emit(product)
   }
 
 }

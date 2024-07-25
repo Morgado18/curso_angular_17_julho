@@ -15,13 +15,14 @@
     </div>
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="container-form">
+ <!--  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="container-form">
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input type="text" formControlName="title" matInput required> <!-- placeholder="Title" -->
+      <input type="text" formControlName="title" matInput required>
     </mat-form-field>
     <button type="submit" mat-flat-button color="accent">
       Create
     </button>
-  </form>
+  </form> -->
 
+  <app-form (done)="onSubmit($event)"></app-form>

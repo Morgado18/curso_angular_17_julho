@@ -6,12 +6,13 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProductsService } from '../../shared/services/products.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from '../../shared/interfaces/product.interface';
+import { FormComponent } from '../../shared/components/form/form.component';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
   imports: [
-    ReactiveFormsModule, MatButtonModule, MatInputModule, RouterLink,
+    ReactiveFormsModule, MatButtonModule, MatInputModule, RouterLink, FormComponent
   ],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
@@ -25,16 +26,17 @@ export class EditComponent {
   /*  */
   product: Product = inject(ActivatedRoute).snapshot.data['product'] //chamar a rota que foi ativada e os seus dados passados
 
-  form = new FormGroup({
+  /* form = new FormGroup({
     title: new FormControl<string>(this.product.title, {
       nonNullable: true,
       validators: Validators.required
     })
-  })
+  }) */
 
-  onSubmit(){
+  onSubmit(product: Product){
+    /* debugger */
     this.productServices.put(this.product.id, {
-      title: this.form.controls.title.value
+      title: product.title
     }).subscribe(()=>{
       this.snackbar.open('Product edited with success!', 'ok')
       this.router.navigateByUrl('/')
