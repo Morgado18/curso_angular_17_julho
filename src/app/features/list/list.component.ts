@@ -25,9 +25,9 @@ import {
     <mat-dialog-content>
       Would you like to purge this product?
     </mat-dialog-content>
-    <mat-dialog-actions>
-      <button mat-button mat-dialog-close>No</button>
-      <button mat-button mat-dialog-close cdkFocusInitial>Yes</button>
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onNot()">No</button>
+      <button mat-raised-button cdkFocusInitial (click)="onYes()" color="accent">Yes</button>
     </mat-dialog-actions>
   `,
   standalone: true,
@@ -35,7 +35,18 @@ import {
     MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, MatDialogModule
   ]
 })
-export class ConfirmationDialogComponent {}
+export class ConfirmationDialogComponent {
+  matDialogRef = inject(MatDialogRef)
+
+  onNot(){
+    this.matDialogRef.close(false)
+  }
+
+  onYes(){
+    this.matDialogRef.close(true)
+  }
+
+}
 
 @Component({
   selector: 'app-list',
@@ -72,8 +83,8 @@ export class ListComponent {
     /* alert('chegou') */
     this.matDialog.open(ConfirmationDialogComponent)
       .afterClosed()
-      .subscribe((data)=>{
-        console.log('afterClosed', data)
+      .subscribe((answer: Boolean)=>{
+        console.log('afterClosed', answer)
       })
   }
 
