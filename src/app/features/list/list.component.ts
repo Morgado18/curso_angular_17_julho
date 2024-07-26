@@ -17,6 +17,7 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -83,8 +84,14 @@ export class ListComponent {
     /* alert('chegou') */
     this.matDialog.open(ConfirmationDialogComponent)
       .afterClosed()
-      .subscribe((answer: Boolean)=>{
-        console.log('afterClosed', answer)
+      .pipe(filter((answer) => answer === true))
+      .subscribe(()=>{
+        /* console.log('afterClosed', answer) */
+        this.productsService.delete(product.id).subscribe(()=>{
+          this.productsService.getAll().subscribe((products=>{
+            this.products = products
+          }))
+        })
       })
   }
 
